@@ -9,4 +9,6 @@ export enum ESettings {
   HOME = 'home',
   DATE = 'date',
   APPLICATIONS = 'applications',
+  AUTOFILL = 'autofill',
+  GOOGLESMSAUTOFILL = 'googleSMSAutofill',
 }

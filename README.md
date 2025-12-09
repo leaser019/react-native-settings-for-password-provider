@@ -76,6 +76,7 @@ See the contributing guide to learn how to contribute to the repository and the 
 
 ## License
 
+From: https://github.com/votrai123/react-native-open-settings-devices
 
 MIT
 ----

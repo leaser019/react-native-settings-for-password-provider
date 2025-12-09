@@ -94,6 +94,43 @@ public class OpenSettingsModule extends ReactContextBaseJavaModule {
           reactContext.startActivity(intent11);
           break;
         }
+        if ("autofill".equals(value)) {
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+          Intent intent12 = new Intent(Settings.ACTION_REQUEST_SET_AUTOFILL_SERVICE);
+          
+          intent12.setData(Uri.parse("package:" + reactContext.getPackageName()));
+          intent12.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+          reactContext.startActivity(intent12);
+        } else {
+          Intent fallback = new Intent(Settings.ACTION_SETTINGS);
+          fallback.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+          reactContext.startActivity(fallback);
+        }
+         break;
+        }
+        if("googleSMSAutofill".equals(value)){
+        try {
+        Intent intent = new Intent();
+        intent.setClassName(
+          "com.google.android.gms",
+          "com.google.android.gms.auth.api.phone.settings.SmsRetrieverApiSettingsActivity"
+        );
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+
+        if (intent.resolveActivity(reactContext.getPackageManager()) != null) {
+          reactContext.startActivity(intent);
+        } else {
+          Intent fallback = new Intent(Settings.ACTION_SETTINGS);
+        fallback.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        reactContext.startActivity(fallback);
+        }
+      } catch (Exception e) {
+        Intent fallback = new Intent(Settings.ACTION_SETTINGS);
+        fallback.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        reactContext.startActivity(fallback);
+      }
+              break;
+            }
     }
   }
 
