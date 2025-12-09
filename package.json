@@ -1,6 +1,6 @@
 {
   "name": "react-native-settings-for-password-provider",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "The library is used to open settings for platform Android and IOS (specifically for password provider), and it uses for React Native",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
